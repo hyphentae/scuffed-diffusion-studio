@@ -1,0 +1,54 @@
+# Scuffed Diffusion Studio
+
+[Русская версия](README.ru.md)
+
+A small Python desktop app for transforming images with Stable Diffusion image-to-image. The UI is built with Tkinter, while the model is loaded through Hugging Face Diffusers.
+
+## Features
+
+- supports PNG, JPG, JPEG, WebP, and BMP input files;
+- generates an image variation without a text prompt;
+- adjustable strength, guidance scale, and inference steps;
+- side-by-side previews of the input and output;
+- saves the generated image as `output.png`;
+- exports the generated image to a user-selected PNG, JPEG, or WebP file.
+
+## Requirements
+
+- Python 3.9 or newer;
+- Tkinter;
+- a CUDA-capable GPU is recommended, but CPU mode is supported;
+- an internet connection on the first run to download `CompVis/stable-diffusion-v1-1`.
+
+## Installation
+
+```bash
+python -m venv .venv
+source .venv/bin/activate       # Windows: .venv\Scripts\activate
+pip install torch torchvision diffusers transformers Pillow
+```
+
+On Windows and Linux, the correct `torch` installation may depend on the installed CUDA version. If needed, install PyTorch using the instructions on [pytorch.org](https://pytorch.org/), then install the remaining dependencies.
+
+## Usage
+
+```bash
+python main.py
+```
+
+The app starts downloading the model automatically. Once it is ready:
+
+1. Click **Choose image**.
+2. Adjust the generation parameters.
+3. Click **Redraw**.
+4. Click **Save result** and choose the destination and format.
+
+The input image is saved as `input.png`, and the result as `output.png` in the current directory. **Save result** exports the generated image as PNG, JPEG, or WebP. **Delete files** removes both files and clears the previews.
+
+## Parameters
+
+- **Strength** (`0–1`) controls how much the input image is changed. Higher values produce stronger redraws.
+- **Guidance scale** controls the influence of text conditioning. The current version uses an empty prompt, but keeps this pipeline parameter adjustable.
+- **Steps** controls the number of inference steps. Higher values usually take longer.
+
+The app resizes the input image to `512×512` before generation. The model is initialized without a safety checker (`safety_checker=None`); use the app responsibly.

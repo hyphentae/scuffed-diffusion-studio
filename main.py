@@ -124,6 +124,31 @@ def show_output_image(path):
     output_image_label.image = tk_img
 
 
+def save_output_image():
+    if not os.path.exists(IMAGE_PATH_OUT):
+        messagebox.showwarning("Нет результата", "Сначала сгенерируй изображение")
+        return
+
+    file_path = filedialog.asksaveasfilename(
+        title="Сохранить результат",
+        initialfile="output.png",
+        defaultextension=".png",
+        filetypes=[
+            ("PNG", "*.png"),
+            ("JPEG", "*.jpg *.jpeg"),
+            ("WebP", "*.webp"),
+        ],
+    )
+    if not file_path:
+        return
+
+    try:
+        Image.open(IMAGE_PATH_OUT).convert("RGB").save(file_path)
+        status_label.config(text=f"Результат сохранён: {file_path}")
+    except Exception as e:
+        messagebox.showerror("Ошибка сохранения", str(e))
+
+
 def delete_images():
     for p in (IMAGE_PATH_IN, IMAGE_PATH_OUT):
         if os.path.exists(p):
@@ -134,7 +159,7 @@ def delete_images():
 
 
 root = tk.Tk()
-root.title("Бэкрумизатор")
+root.title("Бэкрумзинатор")
 root.geometry("800x650")
 
 frame_top = ttk.Frame(root, padding=10)
@@ -148,6 +173,9 @@ generate_btn.pack(side="left", padx=5)
 
 delete_btn = ttk.Button(frame_top, text="Удалить файлы", command=delete_images)
 delete_btn.pack(side="left", padx=5)
+
+save_btn = ttk.Button(frame_top, text="Сохранить результат", command=save_output_image)
+save_btn.pack(side="left", padx=5)
 
 params_frame = ttk.LabelFrame(root, text="Параметры генерации", padding=10)
 params_frame.pack(fill="x", padx=10, pady=5)
