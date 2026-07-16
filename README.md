@@ -1,4 +1,4 @@
-# Scuffed Diffusion Studio
+# Backroomsinator / Scuffed Diffusion Studio
 
 **English** | [Русский](README.ru.md)
 

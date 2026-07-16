@@ -1,4 +1,4 @@
-# Бэкрумизатор / Scuffed Diffusion Studio
+# Бэкрумзинатор / Scuffed Diffusion Studio
 
 [English](README.md) | **Русский**
 
