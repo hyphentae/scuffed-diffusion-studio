@@ -1,6 +1,6 @@
 # Scuffed Diffusion Studio
 
-[Русская версия](README.ru.md)
+**English** | [Русский](README.ru.md)
 
 A small Python desktop app for transforming images with Stable Diffusion image-to-image. The UI is built with Tkinter, while the model is loaded through Hugging Face Diffusers.
 

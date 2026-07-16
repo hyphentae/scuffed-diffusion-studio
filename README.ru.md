@@ -1,6 +1,6 @@
 # Бэкрумизатор / Scuffed Diffusion Studio
 
-[English version](README.md)
+[English](README.md) | **Русский**
 
 Небольшое desktop-приложение на Python для перерисовки изображений с помощью Stable Diffusion image-to-image. Интерфейс построен на Tkinter, а модель загружается через Hugging Face Diffusers.
 
